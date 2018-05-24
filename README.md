@@ -3,30 +3,47 @@ This is guide to run tensorflow code from [Google Machine Learning Crash Course]
 
 ## Steps
 
-### 1. Build and run docker container
+### 1. Setup docker image & container
 
 ```
+# Build docker image and run container
 docker-compose -f ./docker/docker-compose.yml up -d
-```
 
-### 2. Connect to bash shell in container
+# Allow to run GUI in docker container
+sudo apt-get install x11-xserver-utils
+xhost +
 
-```
+# Connect to bash shell in container (to run code)
 docker exec -it gg_ml_cc bash
 ```
 
-### 3. Allow to run GUI in docker container
+### 2. Play around with code
+
+All source code located in `src` folder, which is mapped to `/src/` in container.  
+Modify code, play with it and execute in bash shell opened in container:  
+```
+python /src/intro_to_pandas.py
+python /src/first_steps_with_tensor_flow.py
+...
+```
+
+**Temporary stop/resume container**
+```
+# Stop container
+docker-compose -f ./docker/docker-compose.yml stop
+
+# Resume learning
+docker-compose -f ./docker/docker-compose.yml up -d
+docker exec -it gg_ml_cc bash
+```
+
+### 3. Cleanup
 
 ```
-sudo apt-get install x11-xserver-utils
-xhost +
-```
+# Delete container
+docker-compose -f ./docker/docker-compose.yml down
 
-### 4. Execute lesson scripts
-
-All source code located in `/src/` in container.
-
-```
-cd /src
-python first_steps_with_tensor_flow.py
+# Delete image
+docker rmi docker_gg_ml_cc
+...
 ```
