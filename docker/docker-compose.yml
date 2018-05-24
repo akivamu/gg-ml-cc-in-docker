@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gg_ml_cc:
+    build: .
+    container_name: gg_ml_cc
+    command: bash
+    volumes:
+      - ../src:/src
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    stdin_open: true
+    tty: true
+    environment:
+      - DISPLAY=$DISPLAY
