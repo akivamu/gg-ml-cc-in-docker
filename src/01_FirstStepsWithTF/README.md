@@ -79,3 +79,34 @@ Then, we can examine the error, the parameters of our model after training `weig
 We can plot the regression line to see that our model performs very bad.
 
 Time to improve our model!
+
+### Tweaking the model
+
+We refactor the training process into a function `train_model`, so we can easily try various configurations:
+
+- Learning rate  
+- Steps  
+- Batch size  
+
+To recall, in the original code, our configuration is:  
+
+- Learning rate: 0.0000001  
+- Steps: 100  
+- Batch size: 1  
+
+You can see the learning rate is too low. And with batch size is 1 and steps is 100, we just use 100 examples in training dataset.
+
+We need to try various combinations to find best result.
+
+What we do in `train_model` function:
+
+Basically the same as before, but breaking all steps into 10 periods.  
+After each period done, we evaluate the current model, calculating the error and plot.
+
+A good configuration:
+
+- Learning rate: 0.00002  
+- Steps: 500  
+- Batch size: 5  
+
+See the plot, you can see after each period, the straight line (represents our model) become better. And the errors are also reduced after each period.
