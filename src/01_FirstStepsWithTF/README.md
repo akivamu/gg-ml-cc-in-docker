@@ -110,3 +110,20 @@ A good configuration:
 - Batch size: 5  
 
 See the plot, you can see after each period, the straight line (represents our model) become better. And the errors are also reduced after each period.
+
+## Synthetic features
+
+Recall our last code, we use `total_rooms` as a single feature for training process. We can use other features too, such as `population`.  
+But we can also create new feature base on original feature and use it in training process. We call it synthetic feature.
+
+In this exercise, we create new feature: `rooms_per_person` by the formula: `rooms_per_person = total_rooms / population`
+
+Train the model, then plot it.  
+
+Now plot the comparation between predictions and real labels:  
+`plt.scatter(calibration_data["predictions"], calibration_data["targets"])`  
+If our model works perfectly, we should see a perfect diagonal line, means `x = y` line.  
+But it isn't here, because of some outliers.
+
+Now we remove all outliers in input by taking only `rooms_per_person` minimum at 5: `min(x, 5)`  
+Again train model with new processed input, and plot.
