@@ -57,3 +57,25 @@ A: That is Stochastic Gradient Descent way. If you choose multiple examples by u
 You can imagine those are just like table and row in relational database, but in column-oriented instead of rows.
 
 For example code, see `intro_to_pandas.py`
+
+## First steps with TensorFlow
+
+In this exercise, we will build a model to predict **median house value**, using the California's housing data.
+
+The technique here is running Linear Regression with Gradient Descent as optimizer.
+
+First, we start with using only 1 single feature as input: `total_rooms`. And the output is `median_house_value`.  
+Our model will use `total_rooms` and `median_house_value` as training set `(x,y)`.
+
+Looking at the code, there is a complicated in `my_input_fn`. At this time, just consider it as an transformer original data into the structure that TF can use.
+
+The important steps here are:
+
+- `linear_regressor.train`: which trains the model by using our dataset `total_rooms` and `median_house_value`  
+- `linear_regressor.predict`: which predicts the output according to the input `total_rooms`  
+- `metrics.mean_squared_error`: calculate the error between predicts and real value `median_house_value`  
+
+Then, we can examine the error, the parameters of our model after training `weight` and `bias`.  
+We can plot the regression line to see that our model performs very bad.
+
+Time to improve our model!

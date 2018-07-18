@@ -29,7 +29,7 @@ print california_housing_dataframe.describe()
 # 1. Define model
 #   Use gradient descent as the optimizer for training the model.
 #   Set a learning rate of 0.0000001 for Gradient Descent.
-my_optimizer=tf.train.GradientDescentOptimizer(learning_rate=0.0000001)
+my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.0000001)
 my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
 
 #   Configure the linear regression model with our feature columns and optimizer.
@@ -39,6 +39,8 @@ linear_regressor = tf.estimator.LinearRegressor(
 )
 
 # 2. Setup input function
+# This input function works like a wrapper to our original dataset.
+# It process data into something that TF can use.
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     """Trains a linear regression model of one feature.
 
