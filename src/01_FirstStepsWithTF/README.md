@@ -1,6 +1,11 @@
-# Core concepts
+# First steps
 
-**Feature, Label, Example, Prediction**  
+## Core concepts
+
+- Feature
+- Label
+- Example
+- Prediction
 
 **Linear Regression**  
 Predict model is represented by linear function `y' = w0 + w1*x`  
@@ -19,21 +24,25 @@ A popular loss function, is the average squared loss per example over the whole 
 **Gradient Descent**
 A iterative method to find optimal `weight` so that loss is minimized.  
 
-# How to train model
+## How to train model
 
 Assume this is single feature model, single weight `w1`.
 
 First, initialize model weight `w1 = 0` or any value.
 
-Iterate throw N steps, at each step:  
-  - Choose a batch of data, consists of 1 or more examples.  
-  - With current model, calculate loss.  
-  - Use Gradient Descent to find more optimal weight `w1`.  
-  - Update model with new `w1`.  
-  - Repeat next step.  
+Iterate throw N steps, at each step:
 
-**Questions**
+- Choose a batch of data, consists of 1 or more examples.  
+- With current model, calculate loss.  
+- Use Gradient Descent to find more optimal weight `w1`.  
+- Update model with new `w1`.  
+- Repeat next step.  
 
-  - Why multiple steps? Why not single step with big batch?
-  - Is learning_rate related to steps?
-  - Why choose batch with 1 example?
+### Questions
+
+Q: Why multiple steps? Why not single step with big batch?  
+A: With single step, the updated weight may be not good enough (not converged), because we update model base on the learning rate. The point is we continuosly update model until the model converged.  
+About batch size, we can use whole dataset as a batch (traditional way) or split it up (Stochastic or mini-batch way). It deals with very big dataset - computation expensiveness.
+
+Q: Why choose batch with 1 example?  
+A: That is Stochastic Gradient Descent way. If you choose multiple examples by updating step, it becomes mini-batch way.
