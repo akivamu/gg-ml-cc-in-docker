@@ -52,8 +52,13 @@ cities['Population density'] = cities['Population'] / cities['Area square miles'
 print cities
 
 # Exercise #1
+# Modify the cities table by adding a new boolean column that is True if and only if both of the following are True:
+#   The city is named after a saint.
+#   The city has an area greater than 50 square miles.
 print "\n---- 5. Exercise #1 ----"
-cities['Is wide and has saint name'] = (cities['Area square miles'] > 50) & cities['City name'].apply(lambda name: name.startswith('San'))
+citiesNamedAfterASaint = cities['City name'].apply(lambda name: name.startswith('San'))
+citiesGreaterThan50SquareMiles = cities['Area square miles'] > 50
+cities['Is wide and has saint name'] = citiesNamedAfterASaint & citiesGreaterThan50SquareMiles
 print cities
 
 # Indexes of columns and rows

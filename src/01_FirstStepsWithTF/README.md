@@ -46,3 +46,14 @@ About batch size, we can use whole dataset as a batch (traditional way) or split
 
 Q: Why choose batch with 1 example?  
 A: That is Stochastic Gradient Descent way. If you choose multiple examples by updating step, it becomes mini-batch way.
+
+## Intro to pandas
+
+`pandas` is python API for data analysis. Main data structures:
+
+- DataFrame: just like table, but in column-oriented  
+- Series: is a single column  
+
+You can imagine those are just like table and row in relational database, but in column-oriented instead of rows.
+
+For example code, see `intro_to_pandas.py`
