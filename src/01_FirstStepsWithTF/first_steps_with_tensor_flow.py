@@ -71,10 +71,11 @@ def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
 
 # 3. Training
 #   Features
-my_feature = california_housing_dataframe[["total_rooms"]]
+my_feature = california_housing_dataframe[["total_rooms"]]  # here we create new DataFrame,
+                                                            # collect total_rooms as single column Series
 
 #   Labels
-targets = california_housing_dataframe["median_house_value"]
+targets = california_housing_dataframe["median_house_value"] # this is a Series
 
 #   Run training
 _ = linear_regressor.train(
