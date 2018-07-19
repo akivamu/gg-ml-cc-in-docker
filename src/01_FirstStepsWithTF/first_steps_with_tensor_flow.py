@@ -59,8 +59,10 @@ def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     features = {key:np.array(value) for key,value in dict(features).items()}
 
     # Construct a dataset, and configure batching/repeating.
+    # Read https://www.tensorflow.org/guide/datasets
     ds = Dataset.from_tensor_slices((features,targets)) # warning: 2GB limit
-    ds = ds.batch(batch_size).repeat(num_epochs)
+    ds = ds.batch(batch_size).repeat(num_epochs)  # batch_size: how many examples each time call get_next()
+                                                  # num_epochs: how many times the whole dataset repeats. None = Inifinite
 
     # Shuffle the data, if specified.
     if shuffle:
@@ -79,6 +81,8 @@ my_feature = california_housing_dataframe[["total_rooms"]]  # here we create new
 targets = california_housing_dataframe["median_house_value"] # this is a Series
 
 #   Run training
+# Here we run 100 steps
+# At each step, Gradient Descent take 1 example (batch_size=1) to optimizer parameters
 _ = linear_regressor.train(
     input_fn = lambda:my_input_fn(my_feature, targets),
     steps=100

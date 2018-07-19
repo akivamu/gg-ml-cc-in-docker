@@ -67,7 +67,13 @@ The technique here is running Linear Regression with Gradient Descent as optimiz
 First, we start with using only 1 single feature as input: `total_rooms`. And the output is `median_house_value`.  
 Our model will use `total_rooms` and `median_house_value` as training set `(x,y)`.
 
-Looking at the code, there is a complicated in `my_input_fn`. At this time, just consider it as an transformer original data into the structure that TF can use.
+Looking at the code, there is a complicated in `my_input_fn`. At this time, just consider it as an transformer original data into the structure that TF can use - from `pandas` to TensorFlow `Dataset`.  
+The parameters `features`, `targets`, `batch_size` are easy to understand. But what about `num_epochs`.
+
+While training, we need data to be fetched into optimizer continuosly. What if all examples in training data is used?  
+We repeat them, by instruct `Dataset` to repeat data `num_epochs` of times.  
+Specifically, when training, we need the `Dataset` repeats infinitely.
+When making prediction, we need the `Dataset` repeats just once.
 
 The important steps here are:
 
