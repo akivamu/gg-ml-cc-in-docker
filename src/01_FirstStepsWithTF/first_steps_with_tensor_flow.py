@@ -55,6 +55,7 @@ def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
     """
 
     # Convert pandas data into a dict of np arrays.
+    # Here we only has 1 feature, so the dict has single key `total_rooms` with value is an np array
     features = {key:np.array(value) for key,value in dict(features).items()}
 
     # Construct a dataset, and configure batching/repeating.

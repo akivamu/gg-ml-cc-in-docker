@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 city_names = pd.Series(['San Francisco', 'San Jose', 'Sacramento'])
 population = pd.Series([852469, 1015785, 485199])
@@ -19,3 +20,10 @@ print type(dataFrame[['City name', 'Abbr']])
 
 newDataFrame = dataFrame[['City name', 'Abbr']]
 print newDataFrame
+
+print "---- Series to np array"
+npArray = np.array(city_names)
+print npArray
+
+print "---- DataFrame to dict"
+print dict(newDataFrame)
