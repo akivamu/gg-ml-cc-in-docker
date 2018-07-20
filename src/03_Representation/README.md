@@ -44,3 +44,11 @@ But the correct solution is `latitude`, and I don't know why yet???
 Just take `median_income` and `latitude` as our features for now. With these parameters:  
 learning_rate=0.01, steps=500, batch_size=5  
 We can get RMSE = 113.40
+
+### Task 2: Make Better Use of Latitude
+
+In this task, we transform `latitude` feature into multiple features `latitude_32_to_33`, `latitude_33_to_34`...  
+Each of those features has value 1 or 0, depends on if the example belongs to the latitude or not.
+
+So after transformation, we have these features: `median_income`, `latitude_32_to_33`, `latitude_33_to_34`...  
+Feed them to model, we got RMSE = 139.57
