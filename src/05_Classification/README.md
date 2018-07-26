@@ -59,3 +59,29 @@ Explain in spam detectors:
 Precision: how many detected spams are real spam.  
 Recall: how many real spams are detected.
 
+## Programming exercise
+
+We use same dataset as before (California's housing).  
+But instead of Regression (output `median_house_value` which is in continuous range), we will implement Classification here (predict of `median_house_value_is_high` which is in discrete range 0 or 1).
+
+We define new target: `output_targets["median_house_value_is_high"] = (california_housing_dataframe["median_house_value"] > 265000).astype(float)`
+
+The training target is now boolean 0 or 1, but notice the type: `float`, not `boolean`.  
+We do that way because the predict output is actually continuous value - the probability, ranged [0,1].  
+So it's for convenience to calculate the error.
+
+Now, train the model with Regression style, we can get the prediction output which is in continuous ranged [0,1] as before.  
+You can see the RMSE is around 0.44. Because the range is narrowed down to [0,1], so the error should be on that range.  
+
+### Task 1
+
+We're asked to use Log Loss. Why? Should comeback to Coursera ML course - week3.
+
+### Task 2
+
+It's simple: replace `LinearRegressor` with `LinearClassifier`.  
+We also replace RMSE by LogLoss, for better evaluation.
+
+### Task 3
+
+Learn to use `linear_classifier.evaluate`, which provides useful metrics, like `Accuracy` and `AUC`.
